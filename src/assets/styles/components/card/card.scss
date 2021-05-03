@@ -1,5 +1,4 @@
 .cards {
-    
   display: flex;
   border: 1px solid black;
   justify-content: center;
@@ -9,15 +8,18 @@
 }
 
 .card {
-  max-width: 25rem;
-  max-height: 30rem;
+  width: 25rem;
   background-color: #fff;
   border-radius: 8px;
   margin: 1rem;
+  height: 100%;
 
   &__container {
+    height: 30rem;
+
     margin: 2rem;
-   padding: 1rem 2rem;
+    padding: 1rem 2rem;
+    border: 1px solid black;
 
     background: rgb(238, 174, 202);
     background: radial-gradient(
@@ -32,6 +34,7 @@
   }
 
   &__image {
+    height:70%;
     img {
       border-radius: 1rem;
     }
@@ -45,5 +48,6 @@
     font-size: 2rem;
     font-weight: 900;
     color: #393e46;
+    text-transform: capitalize;
   }
 }
