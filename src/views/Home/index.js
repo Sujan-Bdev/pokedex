@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchPokemonList } from "reduxStore/pokemonSlice";
+import {selectAllPokemons} from 'reduxStore/selectors';
 import Card from "components/Card";
 
 const Index = () => {
@@ -10,7 +11,7 @@ const Index = () => {
     dispatch(fetchPokemonList());
   }, [dispatch]);
 
-  const { pokemonList } = useSelector((state) => state.pokemons);
+  const { pokemonList } = useSelector(selectAllPokemons);
 
   return (
     <>

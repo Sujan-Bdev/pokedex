@@ -28,7 +28,7 @@ const pokemonSlice = createSlice({
     },
     [fetchPokemonList.fulfilled]: (state, { payload }) => {
       state.status = "succeeded";
-      state.pokemonList = state.pokemonList.concat(payload);
+      state.pokemonList = payload;
     },
     [fetchPokemonList.rejected]: (state) => {
       state.status = "failed";
