@@ -8,10 +8,20 @@ export const fetchPokemons = async () => {
   return data;
 };
 
-export const fetchPokemonData = async (name) => {
-  const { data } = await axios.get(`${DEFAULT__URL}/pokemon/${name}`);
+export const fetchPokemonData = async (id) => {
+  const { data } = await axios.get(`${DEFAULT__URL}/pokemon/${id}`);
   return data;
 };
+
+export const fetchPokemonSpecies = async (id) => {
+  const { data } = await axios.get(`${DEFAULT__URL}/pokemon-species/${id}`);
+  return data;
+};
+
+export const fetchPokemonEvolutions = async (id) => {
+  const {data} = await axios.get(`${DEFAULT__URL}/evolution-chain/${id}`)
+  return data;
+}
 
 export const loadPokemon = async (data) => {
   let pokemonData = await Promise.all(

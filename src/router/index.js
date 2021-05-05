@@ -10,7 +10,7 @@ const Router = () => {
     <>
       <Switch>
         <Route exact path={path.HOME} component={Home} />
-        <Route exact path={`/pokemon/:name`} component={PokemonDetail}/> 
+        <Route exact path={`/pokemon/:id`} component={PokemonDetail}/> 
       </Switch>
     </>
   );

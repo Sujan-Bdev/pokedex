@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchPokemonList } from "reduxStore/pokemonSlice";
-import {selectAllPokemons} from 'reduxStore/selectors';
+import { selectAllPokemons } from "reduxStore/selectors";
 import Card from "components/Card";
 
 const Index = () => {
@@ -13,15 +13,21 @@ const Index = () => {
 
   const { pokemonList } = useSelector(selectAllPokemons);
 
+  const getPokemonId = (url) => {
+    const words = url.split("/");
+    const id = +words[words.length - 2];
+    return id;
+  };
+
   return (
     <>
       <div className="cards">
         {pokemonList.map((pokemon, index) => (
           <Card
             key={index}
-            id = {pokemon.id}
+            id={getPokemonId(pokemon.url)}
             name={pokemon.name}
-            image={pokemon.sprites.other.dream_world.front_default}
+            url={pokemon.url}
           />
         ))}
       </div>

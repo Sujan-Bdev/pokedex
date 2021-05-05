@@ -1,10 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const index = ({ name, image, id }) => {
+const index = ({ name, url, id }) => {
   return (
     <div className="card">
-      <Link to={`/pokemon/${name}`}>
+      <Link to={`/pokemon/${id}`}>
         <div className="card__container">
           <div className="card__image">
             <img
