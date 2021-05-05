@@ -1,11 +1,18 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchPokemonList } from "reduxStore/pokemonSlice";
 import { selectAllPokemons } from "reduxStore/selectors";
 import Card from "components/Card";
+import Search from "components/Search/Index";
+
 
 const Index = () => {
   const dispatch = useDispatch();
+  const [query, setQuery] = useState("");
+
+  const handleChange = (e) => {
+    setQuery(e.target.value);
+  };
 
   useEffect(() => {
     dispatch(fetchPokemonList());
@@ -19,10 +26,16 @@ const Index = () => {
     return id;
   };
 
+  const fileteredPokemons = pokemonList.filter((pokemon) =>
+    pokemon.name.toLowerCase().includes(query.toLowerCase())
+  );
+
   return (
     <>
+<div className="home">
+      <Search handleChange={handleChange} term={query} />
       <div className="cards">
-        {pokemonList.map((pokemon, index) => (
+        {fileteredPokemons.map((pokemon, index) => (
           <Card
             key={index}
             id={getPokemonId(pokemon.url)}
@@ -30,6 +43,7 @@ const Index = () => {
             url={pokemon.url}
           />
         ))}
+      </div>
       </div>
     </>
   );

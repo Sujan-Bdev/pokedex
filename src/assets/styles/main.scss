@@ -1,5 +1,6 @@
 @import "./common.scss";
 
-
+@import"./components/Navbar/navbar.scss";
 @import "./components/card/card.scss";
-@import "./components/CardDetail/cardDetail.scss"
+@import "./components/CardDetail/cardDetail.scss";
+@import "./components/Search/search.scss";
