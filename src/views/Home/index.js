@@ -4,7 +4,7 @@ import { fetchPokemonList } from "reduxStore/pokemonSlice";
 import { selectAllPokemons } from "reduxStore/selectors";
 import Card from "components/Card";
 import Search from "components/Search/Index";
-
+import Spinner from "components/LoadingSpinner";
 
 const Index = () => {
   const dispatch = useDispatch();
@@ -18,7 +18,7 @@ const Index = () => {
     dispatch(fetchPokemonList());
   }, [dispatch]);
 
-  const { pokemonList } = useSelector(selectAllPokemons);
+  const { pokemonList, status } = useSelector(selectAllPokemons);
 
   const getPokemonId = (url) => {
     const words = url.split("/");
@@ -30,10 +30,12 @@ const Index = () => {
     pokemon.name.toLowerCase().includes(query.toLowerCase())
   );
 
+  if (status === "loading") return <Spinner />;
+
   return (
-    <>
-<div className="home">
+    <div className="home">
       <Search handleChange={handleChange} term={query} />
+
       <div className="cards">
         {fileteredPokemons.map((pokemon, index) => (
           <Card
@@ -44,8 +46,7 @@ const Index = () => {
           />
         ))}
       </div>
-      </div>
-    </>
+    </div>
   );
 };
 
