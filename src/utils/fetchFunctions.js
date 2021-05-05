@@ -3,7 +3,7 @@ import { DEFAULT__URL } from "constants/url";
 
 export const fetchPokemons = async () => {
   const { data } = await axios.get(
-    `${DEFAULT__URL}/pokemon?limit=100&offset=200`
+    `${DEFAULT__URL}/pokemon?limit=800`
   );
   return data;
 };
